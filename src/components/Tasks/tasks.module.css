@@ -1,0 +1,54 @@
+.tasks {
+  width: 100%;
+  max-width: 736px;
+  margin: 0 auto;
+  margin-top: 90px;
+  padding: 0 1rem;
+  background-color: #f8fffe;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.header > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header p {
+  color: #f4512c;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.textPurple {
+  color: #5e1b89 !important;
+}
+
+.header span {
+  background: #e7e7e7;
+  color: #000000;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
