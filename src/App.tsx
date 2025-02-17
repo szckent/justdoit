@@ -5,9 +5,15 @@ import styles from './styles/App.module.css';
 
 const LOCAL_STORAGE_KEY = 'todo:tasks';
 
+interface Task {
+  id: string;
+  title: string;
+  isCompleted: boolean;
+}
+
 function App() {
-  const [tasks, setTasks] = useState([]);
-  const [notification, setNotification] = useState('');
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const [notification, setNotification] = useState<string>('');
 
   useEffect(() => {
     const savedTasks = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -16,13 +22,13 @@ function App() {
     }
   }, []);
 
-  const setTasksAndSave = (newTasks) => {
+  const setTasksAndSave = (newTasks: Task[]) => {
     setTasks(newTasks);
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newTasks));
   };
 
-  const addTask = (taskTitle) => {
-    const newTask = {
+  const addTask = (taskTitle: string) => {
+    const newTask: Task = {
       id: crypto.randomUUID(),
       title: taskTitle,
       isCompleted: false
@@ -32,13 +38,13 @@ function App() {
     setTimeout(() => setNotification(''), 3000); // Clear notification after 3 seconds
   };
 
-  const deleteTaskById = (taskId) => {
+  const deleteTaskById = (taskId: string) => {
     setTasksAndSave(tasks.filter(task => task.id !== taskId));
     setNotification('Task removed successfully!');
     setTimeout(() => setNotification(''), 3000); // Clear notification after 3 seconds
   };
 
-  const toggleTaskCompletedById = (taskId) => {
+  const toggleTaskCompletedById = (taskId: string) => {
     setTasksAndSave(tasks.map(task => 
       task.id === taskId ? { ...task, isCompleted: !task.isCompleted } : task
     ));
@@ -46,7 +52,7 @@ function App() {
     setTimeout(() => setNotification(''), 3000); // Clear notification after 3 seconds
   };
 
-  const updateTaskById = (taskId, newTitle) => {
+  const updateTaskById = (taskId: string, newTitle: string) => {
     setTasksAndSave(tasks.map(task => 
       task.id === taskId ? { ...task, title: newTitle } : task
     ));
